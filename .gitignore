@@ -20,3 +20,6 @@ eclipse
 *.iml
 *.ipr
 *.iws
+
+# local tracking
+.bzr
