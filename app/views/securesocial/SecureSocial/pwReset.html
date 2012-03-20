@@ -1,0 +1,55 @@
+#{extends 'securesocial/SecureSocial/main.html'/}
+#{set title: messages.get('securesocial.pwResetTitle') /}
+
+<div class="span12 columns">
+    <div class="page-header">
+        <h1>&{'securesocial.pwReset'}</h1>
+    </div>
+
+    #{if flash.error}
+    <div class="alert-message block-message error">
+        <div class="alert-actions">
+            ${flash.error}
+        </div>
+    </div>
+    #{/if}
+
+    <div class="clearfix" >
+        <p>&{'securesocial.enterNewPassword'}</p>
+        #{form @securesocial.usernamePasswordController.updatePassword(), autocomplete:'off'}
+            <fieldset>
+                    <label for="displayName">&{'securesocial.username'}</label>
+                    <div class="input">
+                        <input id="displayName" class="large" name="userName" value="${userName}" readonly="readonly"/>
+                    </div>
+                    <br/>
+
+                 <div class="clearfix #{ifError 'password'} error #{/ifError}">
+                    <label for="password">&{'securesocial.password'}</label>
+                    <div class="input">
+                        <input id="password" class="large" name="password" type="password"/>
+                        #{ifError 'password'}
+                        <span class="help-inline">&{'securesocial.required'}</span>
+                        #{/ifError}
+                    </div>
+                </div>
+
+                <div class="clearfix #{ifError 'password2'} error #{/ifError}">
+                    <label for="password2">&{'securesocial.password2'}</label>
+                    <div class="input">
+                        <input id="password2" class="large" name="password2" type="password"/>
+                        #{ifError 'password2'}
+                        <span class="help-inline">#{error 'password2'/}</span>
+                        #{/ifError}
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <input type="submit" value="&{'securesocial.pwReset'}" class="btn primary">
+                </div>
+            </fieldset>
+        #{/form}
+    </div>
+
+</div>
+
